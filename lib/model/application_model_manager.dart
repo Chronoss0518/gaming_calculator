@@ -30,15 +30,33 @@ class ApplicationModelManager
     _playerDatas.add(tmp);
   }
 
-  SettingData getSettingData(){
+  void setUseSettingData(int num){
+    _useSetting = _isOutRangeValue(num,_settingDatas.length) ?
+    _defaultSetting :
+    _settingDatas[num];
+  }
+
+  SettingData getUseSettingData(){
     _useSetting ??= _defaultSetting;
     return _useSetting!;
   }
 
+  SettingData getSettingData(int num){
+    if(_isOutRangeValue(num,_settingDatas.length))return SettingData();
+    _useSetting ??= _defaultSetting;
+    return _useSetting!;
+  }
+
+  get getPlayerDataCount => _playerDatas.length;
+
   PlayerData getPlayerData(int num){
-    return (num >= _playerDatas.length) ?
+    return _isOutRangeValue(num,_playerDatas.length) ?
     _playerDatas[num] :
     _playerDatas[0];
+  }
+
+  bool _isOutRangeValue(int num,int targetListLength){
+    return (num < 0 || num >= targetListLength);
   }
 
   final List<SettingData> _settingDatas = <SettingData>[];
