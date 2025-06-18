@@ -1,5 +1,7 @@
 class SettingData
 {
+  String settingDataName = "";
+
   get maxPoint => _maxPoint;
   get minPoint => _minPoint;
   get maxCount => _maxCount;
