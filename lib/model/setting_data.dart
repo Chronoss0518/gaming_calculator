@@ -2,6 +2,20 @@ import 'package:flutter/material.dart';
 
 class SettingData
 {
+  SettingData();
+  
+  static SettingData createInit(
+    {int maxPoint = 0,
+    int minPoint = 0,
+    int maxCount = 0})
+  {
+    var res = SettingData();
+    res._maxPoint = maxPoint;
+    res._minPoint = minPoint;
+    res._maxCount = maxCount;
+    return res;
+  }
+
   String name = "";
   String description = "";
   Color? color;
@@ -34,6 +48,4 @@ class SettingData
   int _maxPoint = 0;
   int _minPoint = 0;
   int _maxCount = 0;
-
-
 }
