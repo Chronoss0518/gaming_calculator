@@ -1,6 +1,11 @@
+import 'package:flutter/material.dart';
+
 class SettingData
 {
-  String settingDataName = "";
+  String name = "";
+  String description = "";
+  Color? color;
+  Color? outlineColor;
 
   get maxPoint => _maxPoint;
   get minPoint => _minPoint;
