@@ -21,18 +21,18 @@ class OpenOnWindowWidget extends StatefulWidget
 
 class _OpneOnWindowWidgetState extends State<OpenOnWindowWidget>
 {
-  void setOnWidget(Widget onWindow){setState((){this.onWindow = onWindow;});}
+  void setOnWidget(Widget onWindow){setState((){_onWindow = onWindow;});}
 
-  void closeOnWidget(){onWindow = null;}
+  void closeOnWidget(){_onWindow = null;}
 
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
       widget.child,
-      Center(child: onWindow ?? Container()),
+      Center(child: _onWindow ?? Container()),
     ],);
   }
-  Widget? onWindow;
+  Widget? _onWindow;
 
 
 }
