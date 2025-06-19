@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class SettingData
+class DataPanelSettingData
 {
-  SettingData();
+  DataPanelSettingData();
   
-  static SettingData createInit(
+  static DataPanelSettingData createInit(
     {int maxPoint = 0,
     int minPoint = 0,
     int maxCount = 0})
   {
-    var res = SettingData();
+    var res = DataPanelSettingData();
     res._maxPoint = maxPoint;
     res._minPoint = minPoint;
     res._maxCount = maxCount;

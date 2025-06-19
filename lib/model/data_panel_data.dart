@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gaming_calculator/model/setting_data.dart';
+import 'package:gaming_calculator/model/data_panel_setting_data.dart';
 
 class CounterData
 {
@@ -7,7 +7,7 @@ class CounterData
   String name = "";
 }
 
-class PlayerData
+class DataPanelData
 {
   Color? color;
   Color? lineColor;
@@ -15,13 +15,13 @@ class PlayerData
   get point => _point;
   get nickName => _nickName;
 
-  void addPoint(int point,SettingData setting){
+  void addPoint(int point,DataPanelSettingData setting){
     if(point <= 0)return;
     var tmp =  _point + point;
     _point = (setting.maxPoint > tmp) ?  tmp : setting.minPoint;
   }
   
-  void subPoint(int point,SettingData setting){
+  void subPoint(int point,DataPanelSettingData setting){
     if(point <= 0)return;
     var tmp = _point - point;
     _point = (setting.minPoint < tmp) ?  tmp : setting.minPoint;
@@ -41,7 +41,7 @@ class PlayerData
     _counter.remove(name);
   }
 
-  void addCounter(String name,SettingData setting){
+  void addCounter(String name,DataPanelSettingData setting){
     if(!_counter.containsKey(name))return;
     int val = _counter[name]!;
     int tmp = val + 1;
