@@ -17,6 +17,7 @@ class MemberBoard2Scene extends MemberBoardSceneBase
   @override
   void init({SaveData? sendData}) {
     super.init(sendData: sendData);
+    appModelManager.initDataPanelData(0);
     appModelManager.addDataPanelData("Test1");
     appModelManager.addDataPanelData("Test2");
   }
