@@ -9,7 +9,6 @@ late SceneManager _sceneManager;
 void main() {
   _sceneManager = SceneManager(MemberBoard2Scene());
   var appModelManager = ApplicationModelManager();
-  appModelManager.addDataPanelData("Test");
   runApp(const MyApp());
 }
 
