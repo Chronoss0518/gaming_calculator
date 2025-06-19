@@ -1,5 +1,5 @@
-import 'package:ch_flutter_library/widget/scene_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:gaming_calculator/component/scene/member_board_scene_base.dart';
 import 'package:gaming_calculator/model/display_setting_data.dart';
 
 const double ICON_OVER_SIZE = 10;
@@ -8,7 +8,7 @@ class ButtonInverseDataPanel extends StatelessWidget
 {
   ButtonInverseDataPanel(this.displayScene,{this.baseSize,super.key});
 
-  final BaseScene displayScene;
+  final MemberBoardSceneBase displayScene;
   final double? baseSize;
 
   @override
