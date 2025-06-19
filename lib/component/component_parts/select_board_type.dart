@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:gaming_calculator/component/base_component/on_window_size_base.dart';
+import 'package:gaming_calculator/component/base_component/on_window_base.dart';
+import 'package:gaming_calculator/component/component_parts/open_on_window_widget.dart';
 
 class SelectBoardType extends StatelessWidget
 {
-  SelectBoardType({super.key});
+  SelectBoardType(this.displayWidget,{super.key});
 
+  final OpenOnWindowWidget displayWidget;
+  
   @override
   Widget build(BuildContext context) {
-    return OnWindowSizeBase(Container(color: Colors.blue));
+    return OnWindowBase(displayWidget,child: Container(color: Colors.blue,),);
   }
 }
