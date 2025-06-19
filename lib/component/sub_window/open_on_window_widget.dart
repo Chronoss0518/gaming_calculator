@@ -16,7 +16,6 @@ class OpenOnWindowWidget extends StatefulWidget
 
   @override
   State<StatefulWidget> createState() => _state;
-
 }
 
 class _OpneOnWindowWidgetState extends State<OpenOnWindowWidget>

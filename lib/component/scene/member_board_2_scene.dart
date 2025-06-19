@@ -18,7 +18,6 @@ class MemberBoard2Scene extends BaseScene
       baseSize: 12,
       width: 200,
       height: 200,));
-    //baseWidget.setOnWidget(SelectBoardType(baseWidget));
     return baseWidget;
   }
 }
