@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class OpenOnWindowWidget extends StatefulWidget
 {
-
   OpenOnWindowWidget(this.child,{super.key});
 
   final Widget child;
@@ -10,6 +9,8 @@ class OpenOnWindowWidget extends StatefulWidget
   final _state = _OpneOnWindowWidgetState();
 
   Size getWindSize(BuildContext context) => MediaQuery.of(context).size;
+  
+  void closeOnWidget(){_state.closeOnWidget();}
 
   void setOnWidget(Widget onWindow){_state.setOnWidget(onWindow);}
 
@@ -21,6 +22,8 @@ class OpenOnWindowWidget extends StatefulWidget
 class _OpneOnWindowWidgetState extends State<OpenOnWindowWidget>
 {
   void setOnWidget(Widget onWindow){setState((){this.onWindow = onWindow;});}
+
+  void closeOnWidget(){onWindow = null;}
 
   @override
   Widget build(BuildContext context) {
