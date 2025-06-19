@@ -1,14 +1,17 @@
 import 'package:ch_flutter_library/widget/scene_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:gaming_calculator/component/component_parts/select_board_type.dart';
-import 'package:gaming_calculator/component/scene/open_on_window_scene.dart';
+import 'package:gaming_calculator/component/component_parts/data_panel.dart';
+import 'package:gaming_calculator/component/scene/open_on_window_widget.dart';
+import 'package:gaming_calculator/model/application_model_manager.dart';
 
-class MemberBoard2 extends OpenOnWindowScene
+class MemberBoard2 extends BaseScene
 {
+
+  var appModelManager = ApplicationModelManager();
+
   @override
-  Widget buildBase(BuildContext context) {
-    
-    setOnWidget(SelectBoardType());
-    return Container(color: Colors.red,);
+  Widget build(BuildContext context) {
+    var baseWidget = OpenOnWindowWidget(DataPanel(0,baseSize: 12,width: 200,height: 200,));
+    return baseWidget;
   }
 }
