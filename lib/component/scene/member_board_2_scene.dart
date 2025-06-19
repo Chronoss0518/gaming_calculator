@@ -11,7 +11,12 @@ class MemberBoard2Scene extends BaseScene
 
   @override
   Widget build(BuildContext context) {
-    var baseWidget = OpenOnWindowWidget(DataPanel(0,baseSize: 12,width: 200,height: 200,));
+    var baseWidget = OpenOnWindowWidget(
+      DataPanel(0,
+      inversionFlg: false,
+      baseSize: 12,
+      width: 200,
+      height: 200,));
     return baseWidget;
   }
 }

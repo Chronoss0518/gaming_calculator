@@ -1,6 +1,6 @@
 
-import 'package:gaming_calculator/model/player_data.dart';
-import 'package:gaming_calculator/model/setting_data.dart';
+import 'package:gaming_calculator/model/data_panel_data.dart';
+import 'package:gaming_calculator/model/data_panel_setting_data.dart';
 
 class ApplicationModelManager
 {
@@ -12,58 +12,57 @@ class ApplicationModelManager
 
   }
 
-  void initPlayerData(int playerDataCount){
-    if(playerDataCount <= 0)return;
-    _playerDatas.length = playerDataCount;
+  void initDataPanelData(int dataPanelDataCount){
+    if(dataPanelDataCount <= 0)return;
+    _dataPanelDatas.length = dataPanelDataCount;
   }
 
   void addSettingData(String settingName,String description){
-    var tmp = SettingData();
+    var tmp = DataPanelSettingData();
     tmp.name = settingName;
     tmp.description = description;
     _settingDatas.add(tmp);
   }
 
-  void addPlayerData(String name){
-    var tmp = PlayerData();
+  void addDataPanelData(String name){
+    var tmp = DataPanelData();
     tmp.setNickName(name);
-    _playerDatas.add(tmp);
+    _dataPanelDatas.add(tmp);
   }
 
   void setUseSettingData(int num){
-    _useSetting = _isOutRangeValue(num,_settingDatas.length) ?
-    _defaultSetting :
-    _settingDatas[num];
+    _useSetting = _isRangeValue(num,_settingDatas.length) ?
+    _settingDatas[num] :
+    _defaultSetting;
   }
 
-  SettingData getUseSettingData(){
+  DataPanelSettingData getUseSettingData(){
     _useSetting ??= _defaultSetting;
     return _useSetting!;
   }
 
-  SettingData getSettingData(int num){
-    if(_isOutRangeValue(num,_settingDatas.length))return SettingData();
-    _useSetting ??= _defaultSetting;
-    return _useSetting!;
+  void setSettingData(int num){
+    if(_isRangeValue(num,_settingDatas.length))return;
+    _useSetting = _settingDatas[num];
   }
 
-  get getPlayerDataCount => _playerDatas.length;
+  get getDataPanelDataCount => _dataPanelDatas.length;
 
-  PlayerData getPlayerData(int num){
-    return _isOutRangeValue(num,_playerDatas.length) ?
-    _playerDatas[num] :
-    _playerDatas[0];
+  DataPanelData? getDataPanelData(int num){
+    return _isRangeValue(num,_dataPanelDatas.length) ?
+    _dataPanelDatas[num] :
+    null ;
   }
 
-  bool _isOutRangeValue(int num,int targetListLength){
-    return (num < 0 || num >= targetListLength);
+  bool _isRangeValue(int num,int targetListLength){
+    return (num >= 0 && num < targetListLength);
   }
 
-  final List<SettingData> _settingDatas = <SettingData>[];
-  SettingData? _useSetting;
-  final List<PlayerData> _playerDatas = <PlayerData>[];
+  final List<DataPanelSettingData> _settingDatas = <DataPanelSettingData>[];
+  DataPanelSettingData? _useSetting;
+  final List<DataPanelData> _dataPanelDatas = <DataPanelData>[];
 
-  final SettingData _defaultSetting = SettingData.createInit(
+  final DataPanelSettingData _defaultSetting = DataPanelSettingData.createInit(
     maxPoint: 99990000,
     minPoint: 0,
     maxCount: 99); 
