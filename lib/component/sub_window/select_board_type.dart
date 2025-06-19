@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_calculator/component/base_component/on_window_base.dart';
-import 'package:gaming_calculator/component/component_parts/open_on_window_widget.dart';
+import 'package:gaming_calculator/component/sub_window/open_on_window_widget.dart';
 
 class SelectBoardType extends StatelessWidget
 {
