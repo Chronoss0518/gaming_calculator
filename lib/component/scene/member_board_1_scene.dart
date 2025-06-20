@@ -19,10 +19,18 @@ class MemberBoard1Scene extends MemberBoardSceneBase
     super.init(sendData: sendData);
     appModelManager.initDataPanelData(0);
     appModelManager.addDataPanelData("Test1");
+
+    var data = appModelManager.getDataPanelData(0);
+    data?.addPoint(99980000,appModelManager.getUseSettingData());
   }
 
   @override
   Widget build(BuildContext context) {
-    return DataPanelEditor(0,this,displayCloseButtonFlg: false,);
+    var displaySetting = getSaveData<DisplaySettingData>();
+    return DataPanelEditor(
+      0,
+      this,
+      inversionFlg: displaySetting?.inversionFlg ?? false,
+      displayCloseButtonFlg: false,);
   }
 }
