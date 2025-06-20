@@ -15,7 +15,7 @@ class ButtonInverseDataPanel extends StatelessWidget
   Widget build(BuildContext context) {
 
     var tmpSize = baseSize;
-    if(tmpSize != null)tmpSize = tmpSize + ICON_OVER_SIZE;
+    if(tmpSize != null)tmpSize = tmpSize - ICON_OVER_SIZE;
     return MaterialButton(
       onPressed: (){
         displayScene.setState((){
@@ -24,12 +24,13 @@ class ButtonInverseDataPanel extends StatelessWidget
         });
       },
       child: Container(
-        width: tmpSize,
-        height: tmpSize,
+        width: baseSize,
+        height: baseSize,
+        margin: EdgeInsets.only(top:5.0,bottom:5.0),
         decoration: BoxDecoration(border: Border.all(width: 5.0)),
         child: Center(
           child: Icon(
-            Icons.change_circle_outlined,size: baseSize,
+            Icons.change_circle_outlined,size: tmpSize,
           ),
         )
       )
