@@ -9,12 +9,11 @@ import 'package:gaming_calculator/model/display_setting_data.dart';
 class DataPanelEditor extends StatefulWidget
 {
   
-  DataPanelEditor(this.dataPanelNo,this.sceneBase,{this.inversionFlg = false,this.displayCloseButtonFlg = true,super.key});
+  DataPanelEditor(this.dataPanelNo,this.sceneBase,{this.displayCloseButtonFlg = true,super.key});
   
   final MemberBoardSceneBase sceneBase;
   final bool displayCloseButtonFlg;
   final int dataPanelNo;
-  final bool inversionFlg;
 
   @override
   State<StatefulWidget> createState() => _DataPanelEditorState();
@@ -42,9 +41,9 @@ class _DataPanelEditorState extends State<DataPanelEditor>
     var tmpSize = size.width < size.height ? size.width:size.height;
     tmpSize = tmpSize * 0.1;
 
-    var displaySetting = widget.sceneBase.getSaveData<DisplaySettingData>();
     var baseWidget = OpenOnWindowWidget(
       Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ButtonInverseDataPanel(widget.sceneBase,baseSize: tmpSize,),
           buildPanel(context,size),
@@ -57,6 +56,7 @@ class _DataPanelEditorState extends State<DataPanelEditor>
   Widget buildPanel(BuildContext context,Size size) {
     var data = appModelManager.getDataPanelData(widget.dataPanelNo);
 
+    var displaySetting = widget.sceneBase.getSaveData<DisplaySettingData>();
     double baseSize = size.width < size.height ? size.width : size.height;
 
     baseSize = baseSize * 0.05;
@@ -71,7 +71,7 @@ class _DataPanelEditorState extends State<DataPanelEditor>
         alignment: Alignment.topLeft,
         children: [
           RotatedBox(
-            quarterTurns: !widget.inversionFlg ? 0 : 2,
+            quarterTurns: displaySetting?.inversionFlg ?? false ? 0 : 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
