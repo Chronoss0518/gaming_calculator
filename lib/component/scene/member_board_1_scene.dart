@@ -23,17 +23,6 @@ class MemberBoard1Scene extends MemberBoardSceneBase
 
   @override
   Widget build(BuildContext context) {
-    var displaySetting = getSaveData<DisplaySettingData>();
-    var baseWidget = OpenOnWindowWidget(
-      Row(
-        children: [
-          ButtonInverseDataPanel(this,baseSize: 64.0,),
-          DataPanelEditor(0,
-          inversionFlg: displaySetting?.inversionFlg ?? false,
-          displayCloseButtonFlg: false,),
-          ButtonInverseDataPanel(this,baseSize: 64.0,),
-        ],
-      ));
-    return baseWidget;
+    return DataPanelEditor(0,this,displayCloseButtonFlg: false,);
   }
 }
