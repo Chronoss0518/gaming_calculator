@@ -1,10 +1,8 @@
-import 'package:ch_flutter_library/widget/base_state.dart';
 import 'package:flutter/material.dart';
 import 'package:gaming_calculator/component/component_parts/button_inverse_data_panel.dart';
 import 'package:gaming_calculator/component/scene/member_board_scene_base.dart';
 import 'package:gaming_calculator/component/sub_window/open_on_window_widget.dart';
 import 'package:gaming_calculator/model/application_model_manager.dart';
-import 'package:gaming_calculator/model/display_setting_data.dart';
 
 class DataPanelEditor extends StatefulWidget
 {
@@ -37,6 +35,7 @@ class _DataPanelEditorState extends State<DataPanelEditor>
 
   @override
   void initState() {
+    super.initState();
     var data = appModelManager.getDataPanelData(widget.dataPanelNo);
     controller = TextEditingController(text: data?.nickName ?? "");
   }
