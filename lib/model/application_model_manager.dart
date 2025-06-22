@@ -2,11 +2,11 @@
 import 'package:gaming_calculator/model/data_panel_data.dart';
 import 'package:gaming_calculator/model/data_panel_setting_data.dart';
 
-class ApplicationModelManager
+final appModelManager = _ApplicationModelManager._internal();
+
+class _ApplicationModelManager
 {
-  ApplicationModelManager._internal();
-  static final ApplicationModelManager instance = ApplicationModelManager._internal();
-  factory ApplicationModelManager() => instance;
+  _ApplicationModelManager._internal();
 
   void init(){
 
