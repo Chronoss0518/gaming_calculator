@@ -118,10 +118,10 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "8357453eee4cc793eec8b35bbf47becb3fa18280"
+      resolved-ref: edd32624d60e83b3484f975a38b9b261e24e8fe8
       url: "https://github.com/Chronoss0518/ch_flutter_library"
     source: git
-    version: "0.0.2"
+    version: "0.0.4"
   characters:
     dependency: transitive
     description:
