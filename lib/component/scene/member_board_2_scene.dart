@@ -10,8 +10,6 @@ import 'package:gaming_calculator/model/display_setting_data.dart';
 class MemberBoard2Scene extends MemberBoardSceneBase
 {
 
-  var appModelManager = ApplicationModelManager();
-
   @override
   void init({SaveData? sendData}) {
     super.init(sendData: sendData);

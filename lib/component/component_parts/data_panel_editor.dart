@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gaming_calculator/component/component_parts/button_inverse_data_panel.dart';
+import 'package:gaming_calculator/component/component_parts/point_editor.dart';
 import 'package:gaming_calculator/component/scene/member_board_scene_base.dart';
 import 'package:gaming_calculator/component/sub_window/open_on_window_widget.dart';
 import 'package:gaming_calculator/model/application_model_manager.dart';
@@ -26,7 +27,6 @@ class DataPanelEditor extends StatefulWidget
 
 class _DataPanelEditorState extends State<DataPanelEditor>
 {
-  final appModelManager = ApplicationModelManager();
 
   static const double nickNameTextSize = 2.0; 
   static const double pointTextSize = 3.0; 
@@ -76,31 +76,36 @@ class _DataPanelEditorState extends State<DataPanelEditor>
         children: [
           RotatedBox(
             quarterTurns:!widget.inversionFlg ? 0 : 2,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
               children: [
-              Container(
-                margin:EdgeInsets.all(1.0),
-                child: TextField(
-                  controller: controller,
-                  onEditingComplete: () {
-                    data.setNickName(controller.text);
-                  },
-                  style: TextStyle(fontSize: nickNameTextSize * baseSize),
-                  textAlign: TextAlign.left)),
-              Row(
-                children: [
-                  Container(
-                    margin:EdgeInsets.all(1.0),
-                    child: Text(
-                      data.point.toString(),
-                      style: TextStyle(fontSize: pointTextSize * baseSize,),
-                      textAlign: TextAlign.left,),
-                  ),
-                ],
-              ),
-            
-            ],),
+                Container(
+                  width: size.width * 0.4,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin:EdgeInsets.all(1.0),
+                        child: TextField(
+                          controller: controller,
+                          onEditingComplete: () {
+                            data.setNickName(controller.text);
+                          },
+                          style: TextStyle(fontSize: nickNameTextSize * baseSize),
+                          textAlign: TextAlign.left),
+                      ),
+                    Container(
+                      margin:EdgeInsets.all(1.0),
+                      child: Text(
+                        data.point.toString(),
+                        style: TextStyle(fontSize: pointTextSize * baseSize,),
+                        textAlign: TextAlign.left,),
+                    ),
+                  
+                  ],),
+                ),
+                PointEditor(),
+              ],
+            ),
           ),
         ],
       ) : null,
