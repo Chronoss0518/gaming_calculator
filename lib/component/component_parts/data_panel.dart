@@ -17,12 +17,9 @@ class DataPanel extends StatelessWidget
   final double? width;
   final double? height;
 
-
   static const double nickNameTextSize = 2.0; 
   static const double pointTextSize = 3.0; 
   
-  final appModelManager = ApplicationModelManager();
-
   @override
   Widget build(BuildContext context) {
     var data = appModelManager.getDataPanelData(dataPanelNo);
