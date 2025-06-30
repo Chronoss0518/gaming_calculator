@@ -29,7 +29,7 @@ class MemberBoard2Scene extends MemberBoardSceneBase
           baseSize: 12,
           width: 200,
           height: 200,),
-          ButtonInverseDataPanel(this,baseSize: 64.0,),
+          ButtonInverseDataPanel(this,64.0,),
           DataPanel(1,
           inversionFlg: displaySetting?.inversionFlg ?? false,
           baseSize: 12,
