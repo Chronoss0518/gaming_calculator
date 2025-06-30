@@ -16,8 +16,6 @@ class NumberPanel extends StatelessWidget
   Widget build(BuildContext context) {
     final tmpSize = size * 0.8;
     return Container(
-      width : size,
-      height : size,
       decoration: BoxDecoration(border: Border.all(width:5)),
       child:Text(number.toString(),style:TextStyle(fontSize: tmpSize),textAlign: TextAlign.center,),
     );
