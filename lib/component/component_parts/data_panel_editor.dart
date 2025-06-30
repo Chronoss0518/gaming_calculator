@@ -107,6 +107,9 @@ class _DataPanelEditorState extends State<DataPanelEditor>
                 ],
               ),
             ),
+            Expanded(
+              flex: 4,
+              child: Container()),
           ],
         ),
       ) : null,
