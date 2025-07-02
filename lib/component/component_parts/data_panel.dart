@@ -44,7 +44,7 @@ class DataPanel extends StatelessWidget
           Container(
             margin:EdgeInsets.all(1.0),
             child: Text(
-              data.point.toString(),
+              data.viewPoint.toString(),
               style: TextStyle(fontSize: pointTextSize * baseSize,),
               textAlign: TextAlign.left,),
           ),
