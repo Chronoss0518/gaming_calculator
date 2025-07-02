@@ -7,10 +7,12 @@ class PointEditor extends StatefulWidget
 {
 
   PointEditor(
+    this.baseSize,
     this.displayScene,
     this.dataPanelNo,{
       super.key});
-    
+  
+  final double baseSize;
   final MemberBoardSceneBase displayScene;
   final int dataPanelNo;
   @override
@@ -36,39 +38,69 @@ class _State extends State<PointEditor>
         Expanded(
           child: TextField(controller:controller,onChanged: (value) {
             this.value = int.tryParse(value) ?? 0;
-            controller.text = this.value.toString();
           },
           keyboardType: TextInputType.numberWithOptions(decimal: true),
           style:TextStyle(fontSize: tmpSize)),
         ),
         Expanded(
-          child: GridView.count(
-            crossAxisCount: 2,
+          child: Column(
             children: [
-              buildButtons(context,'⤵',(){widget.displayScene.setState((){value = data?.calcPoint ?? 0 ;controller.text = value.toString();});}),
-              buildButtons(context,'÷2',(){widget.displayScene.setState((){value = (value.toDouble() / 2.0).toInt();controller.text = value.toString();});}),
-              buildButtons(context,'+',(){widget.displayScene.setState((){data?.addPoint(value, setting); value = 0; controller.text = value.toString();});}),
-              buildButtons(context,'-',(){widget.displayScene.setState((){data?.subPoint(value, setting); value = 0; controller.text = value.toString();});}),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildButtons(context,'⤵',(){widget.displayScene.setState((){value = data?.calcPoint ?? 0 ;controller.text = value.toString();});}),
+                  buildButtons(context,'÷2',(){widget.displayScene.setState((){value = (value.toDouble() / 2.0).toInt();controller.text = value.toString();});}),
+                  buildButtons(context,'C',(){widget.displayScene.setState((){value = 0;controller.text = value.toString();});}),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildButtons(context,'+',(){widget.displayScene.setState((){data?.addPoint(value, setting); value = 0; controller.text = value.toString();});}),
+                  buildButtons(context,'-',(){widget.displayScene.setState((){data?.subPoint(value, setting); value = 0; controller.text = value.toString();});}),
+                  buildButtons(context,'=',(){widget.displayScene.setState((){data?.setPoint(value,setting); value = 0; controller.text = value.toString();});}),
+                ],
+              ),
             ],
           ),
         ),
         Expanded(
           flex: 4,
-          child: AspectRatio(
-            aspectRatio: 0.7,
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-              
-              itemBuilder: (context,count){
-                return NumberPanel((count + 1) % 10, tmpSize, (){
-                  widget.displayScene.setState((){value *= 10;value += (count + 1) % 10;});
-                  controller.text = value.toString();
-                });
-              },
-              itemCount: 10,
-            ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildNumberPanels(context,1),
+                  buildNumberPanels(context,2),
+                  buildNumberPanels(context,3),
+                ],    
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildNumberPanels(context,4),
+                  buildNumberPanels(context,5),
+                  buildNumberPanels(context,6),
+                ],    
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildNumberPanels(context,7),
+                  buildNumberPanels(context,8),
+                  buildNumberPanels(context,9),
+                ],    
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  buildNumberPanels(context,0),
+                ],    
+              ),
+            ],
           ),
-        )
+        ),
       ],
     );
   }
@@ -79,10 +111,16 @@ class _State extends State<PointEditor>
     void Function() act)
   {
     return Container(
+      decoration:BoxDecoration(border: Border.all()),
       child: MaterialButton(onPressed: act,
-      child: Text(item),
+        child: Text(item,style : TextStyle(fontSize: widget.baseSize,),),
       ),
     );
+  }
+
+  Widget buildNumberPanels(BuildContext context,int num)
+  {
+    return NumberPanel(num, widget.baseSize, (){value *= 10; value += num; controller.text = value.toString();});
   }
 
 }

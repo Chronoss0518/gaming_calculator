@@ -103,7 +103,10 @@ class _DataPanelEditorState extends State<DataPanelEditor>
             ),
             Expanded(
               flex: 1,
-              child: PointEditor(widget.sceneBase,widget.dataPanelNo)),
+              child: PointEditor(
+                baseSize,
+                widget.sceneBase,
+                widget.dataPanelNo)),
           ],
         ),
       ) : null,
