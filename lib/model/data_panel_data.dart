@@ -20,6 +20,14 @@ class DataPanelData
   get calcPoint => _calcPoint;
   get nickName => _nickName;
 
+  void setPoint(int point,DataPanelSettingData setting){
+    var tmp =  point;
+
+    if(tmp <= setting.minPoint)tmp = setting.minPoint;
+    if(tmp >= setting.maxPoint)tmp = setting.maxPoint;
+    _calcPoint = tmp;
+  }
+  
   void addPoint(int point,DataPanelSettingData setting){
     if(point <= 0)return;
     var tmp =  _calcPoint + point;
@@ -84,11 +92,12 @@ class DataPanelData
       _calcPoint - _point :
       _point - _calcPoint;
     var count = 0;
-    for(int i = 0;i < _LOOP_COUNT;i++)
-    {
-      if(tmp > 0)count += 1;
-      tmp = (tmp / _CALC_SIZE).toInt();
-    }
+    // for(int i = 0;i < _LOOP_COUNT;i++)
+    // {
+    //   if(tmp > 0)count += 1;
+    //   tmp = (tmp / _CALC_SIZE).toInt();
+    // }
+    count = (tmp / 5).toInt() + 1;
 
     _point += _calcPoint > _point ? count : -count;
   }
