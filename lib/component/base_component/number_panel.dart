@@ -17,7 +17,9 @@ class NumberPanel extends StatelessWidget
     final tmpSize = size * 0.8;
     return Container(
       decoration: BoxDecoration(border: Border.all(width:5)),
-      child:Text(number.toString(),style:TextStyle(fontSize: tmpSize),textAlign: TextAlign.center,),
+      child:MaterialButton(
+        onPressed: act,
+        child: Text(number.toString(),style:TextStyle(fontSize: tmpSize),textAlign: TextAlign.center,)),
     );
   }
 }
