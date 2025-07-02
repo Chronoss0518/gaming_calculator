@@ -51,9 +51,9 @@ class _DataPanelEditorState extends State<DataPanelEditor>
       Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(child: DataPanelEditorButtons(<DataPanelEditorButtonBase>[ButtonInverseDataPanel(widget.sceneBase,tmpSize,)],false)),
+          Expanded(child: DataPanelEditorButtons(widget.sceneBase,tmpSize,false)),
           Expanded(flex: 8,child: buildPanel(context,size)),
-          Expanded(child: DataPanelEditorButtons(<DataPanelEditorButtonBase>[ButtonInverseDataPanel(widget.sceneBase,tmpSize,)],true)),
+          Expanded(child: DataPanelEditorButtons(widget.sceneBase,tmpSize,true)),
         ],
       ));
     return baseWidget;
@@ -64,7 +64,7 @@ class _DataPanelEditorState extends State<DataPanelEditor>
 
     double baseSize = size.width < size.height ? size.width : size.height;
 
-    baseSize = baseSize * 0.01;
+    baseSize = baseSize * 0.05;
 
     return Container(
       padding: EdgeInsets.all(10.0),
@@ -72,44 +72,38 @@ class _DataPanelEditorState extends State<DataPanelEditor>
       child:data != null ? 
       RotatedBox(
         quarterTurns:!widget.inversionFlg ? 0 : 2,
-        child: Column(
+        child: Row(
           children: [
-            Expanded(flex: 6,
-              child: Row(
-                children: [
-                  Expanded(flex: 3,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin:EdgeInsets.all(1.0),
-                          child: TextField(
-                            controller: controller,
-                            onEditingComplete: () {
-                              data.setNickName(controller.text);
-                            },
-                            style: TextStyle(fontSize: nickNameTextSize * baseSize),
-                            textAlign: TextAlign.left),
-                        ),
-                      Container(
-                        margin:EdgeInsets.all(1.0),
-                        child: Text(
-                          data.point.toString(),
-                          style: TextStyle(fontSize: pointTextSize * baseSize,),
-                          textAlign: TextAlign.left,),
-                      ),
-                    
-                    ],),
+            Expanded(flex: 3,
+              child: Container(
+                decoration: BoxDecoration(border:Border(right: BorderSide(width: 5.0))),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin:EdgeInsets.all(1.0),
+                      child: TextField(
+                        controller: controller,
+                        onEditingComplete: () {
+                          data.setNickName(controller.text);
+                        },
+                        style: TextStyle(fontSize: nickNameTextSize * baseSize),
+                        textAlign: TextAlign.left),
+                    ),
+                  Container(
+                    margin:EdgeInsets.all(1.0),
+                    child: Text(
+                      data.viewPoint.toString(),
+                      style: TextStyle(fontSize: pointTextSize * baseSize,),
+                      textAlign: TextAlign.left,),
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: PointEditor(widget.sceneBase)),
-                ],
+                
+                ],),
               ),
             ),
             Expanded(
-              flex: 4,
-              child: Container()),
+              flex: 1,
+              child: PointEditor(widget.sceneBase,widget.dataPanelNo)),
           ],
         ),
       ) : null,
