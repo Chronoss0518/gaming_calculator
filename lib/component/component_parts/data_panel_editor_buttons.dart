@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gaming_calculator/component/component_parts/button_inverse_data_panel.dart';
 import 'package:gaming_calculator/component/scene/member_board_scene_base.dart';
 
 const double ICON_SIZE_RATIO = 0.8;
@@ -38,11 +39,13 @@ class DataPanelEditorButtonBase extends StatelessWidget
 class DataPanelEditorButtons extends StatelessWidget
 {
   const DataPanelEditorButtons(
-    this.buttonList,
+    this.displayScene,
+    this.baseSize,
     this.inversFlg,{
       super.key});
 
-  final List<DataPanelEditorButtonBase> buttonList;
+  final MemberBoardSceneBase displayScene;
+  final double baseSize;
   final bool inversFlg;
 
   @override
@@ -51,7 +54,9 @@ class DataPanelEditorButtons extends StatelessWidget
       quarterTurns:!inversFlg ? 0 : 2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: buttonList,
+        children: [
+          ButtonInverseDataPanel(displayScene,baseSize,)
+        ],
       ),
     );
   }
