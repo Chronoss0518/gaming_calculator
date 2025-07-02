@@ -1,4 +1,3 @@
-
 import 'package:gaming_calculator/model/data_panel_data.dart';
 import 'package:gaming_calculator/model/data_panel_setting_data.dart';
 

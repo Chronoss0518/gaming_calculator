@@ -1,5 +1,9 @@
+import 'package:ch_flutter_library/widget/object_function_base.dart';
 import 'package:flutter/material.dart';
 import 'package:gaming_calculator/model/data_panel_setting_data.dart';
+
+const int _LOOP_COUNT = 10;
+const double _CALC_SIZE = 10.0;
 
 class CounterData
 {
@@ -12,19 +16,20 @@ class DataPanelData
   Color? color;
   Color? lineColor;
 
-  get point => _point;
+  get viewPoint => _point;
+  get calcPoint => _calcPoint;
   get nickName => _nickName;
 
   void addPoint(int point,DataPanelSettingData setting){
     if(point <= 0)return;
-    var tmp =  _point + point;
-    _point = (setting.maxPoint > tmp) ?  tmp : setting.minPoint;
+    var tmp =  _calcPoint + point;
+    _calcPoint = (setting.maxPoint > tmp) ?  tmp : setting.minPoint;
   }
   
   void subPoint(int point,DataPanelSettingData setting){
     if(point <= 0)return;
-    var tmp = _point - point;
-    _point = (setting.minPoint < tmp) ?  tmp : setting.minPoint;
+    var tmp = _calcPoint - point;
+    _calcPoint = (setting.minPoint < tmp) ?  tmp : setting.minPoint;
   }
 
   void setNickName(String name){
@@ -71,10 +76,27 @@ class DataPanelData
     return res;
 
   }
-  
+
+  void update()
+  {
+    if(_calcPoint == _point)return;
+    var tmp = _calcPoint > _point ?
+      _calcPoint - _point :
+      _point - _calcPoint;
+    var count = 0;
+    for(int i = 0;i < _LOOP_COUNT;i++)
+    {
+      if(tmp > 0)count += 1;
+      tmp = (tmp / _CALC_SIZE).toInt();
+    }
+
+    _point += _calcPoint > _point ? count : -count;
+  }
+
 //Private Member//
 
   int _point = 0;
+  int _calcPoint = 0;
   String _nickName  = "";
   final Map<String,int> _counter = <String,int>{};
 }
