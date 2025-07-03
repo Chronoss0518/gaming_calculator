@@ -3,6 +3,9 @@ import 'package:gaming_calculator/model/application_model_manager.dart';
 import 'package:gaming_calculator/model/data_panel_data.dart';
 import 'package:gaming_calculator/model/display_setting_data.dart';
 
+const int _FPS_COUNT = 120;
+
+
 abstract class MemberBoardSceneBase extends BaseScene
 {
   @override
@@ -21,7 +24,7 @@ abstract class MemberBoardSceneBase extends BaseScene
       },);
     };
     
-    setFps(120);
+    setFps(_FPS_COUNT);
   }
 
 }
