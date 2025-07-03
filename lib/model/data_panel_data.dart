@@ -97,7 +97,7 @@ class DataPanelData
     //   if(tmp > 0)count += 1;
     //   tmp = (tmp / _CALC_SIZE).toInt();
     // }
-    count = (tmp / 5).toInt() + 1;
+    count = (tmp / _CALC_SIZE).toInt() + 1;
 
     _point += _calcPoint > _point ? count : -count;
   }
