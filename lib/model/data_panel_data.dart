@@ -85,6 +85,10 @@ class DataPanelData
 
   }
 
+  bool isCounterKey(String key){
+    return _counter.containsKey(key);
+  }
+
   void update()
   {
     if(_calcPoint == _point)return;
